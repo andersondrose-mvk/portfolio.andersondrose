@@ -28,12 +28,22 @@ li {
 }
 
 .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0; /* Remove padding lateral pois o max-width já resolve */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
   position: relative;
-}
+} */
 
 .menu {
   display: flex;
@@ -456,4 +466,110 @@ li {
 #backToTop:hover {
   transform: translateY(-5px);
   background-color: #10b981;
+}
+
+/* teste tela grande 1920p */
+
+/* No seu CSS, substitua as listas e containers por isso: */
+
+.projetos-container, 
+.habilidades-lista {
+    display: grid;
+    /* Em 1080p, teremos 3 ou 4 colunas bem distribuídas */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    gap: 30px;
+    padding: 40px 0;
+    width: 100%;
+    max-width: 1400px; /* Um pouco maior para preencher mais a tela */
+    margin: 0 auto;
+}
+
+/* @media (min-width: 1200px) {
+    .sobre-conteudo {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 60px;
+        text-align: left;
+    }
+
+    .sobre-texto {
+        flex: 2; /* O texto ocupa mais espaço */
+    }
+
+    .sobre-dados {
+        flex: 1; /* Os números ocupam a lateral */
+        flex-direction: column; /* Dados um embaixo do outro na lateral */
+        align-items: flex-start;
+    }
+} */
+
+.hero-container h2 {
+    font-size: 4.5rem; /* Aumentado para 1080p */
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+/* Adiciona um efeito de profundidade no fundo */
+.hero {
+    background: radial-gradient(circle at center, #1e293b 0%, #020617 70%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Substitua as regras de altura por estas */
+#sobre, #projetos, #habilidades, #contato {
+    min-height: auto; /* Remove a obrigação de ocupar a tela toda */
+    padding: 100px 0; /* Cria um respiro elegante em cima e embaixo */
+}
+
+/* Ajuste específico para o Hero que é o topo */
+.hero {
+    height: 70vh; /* Diminuído para não sobrar tanto espaço no topo em 1080p */
+    min-height: 500px;
+}
+/* @media (min-width: 1200px) {
+    .sobre-dados {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Coloca os dados em duas colunas ao lado do texto */
+        gap: 40px;
+    }
+    
+    .sobre-dados strong {
+        font-size: 3.5rem; /* Números maiores para preencher a tela */
+    }
+} */
+.projetos-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 40px; /* Mais espaço entre cards preenche melhor o vazio */
+}
+
+.projeto-card {
+    max-width: 400px;
+    justify-self: center; /* Centraliza o card se sobrar espaço na coluna */
+}
+@media (min-width: 1200px) {
+    .sobre-conteudo {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center; /* Centraliza verticalmente o texto com os números */
+        gap: 80px;
+        text-align: left;
+    }
+
+    .sobre-texto {
+        flex: 1.5; 
+    }
+
+    .sobre-dados {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas de números */
+        gap: 30px;
+    }
+    
+    .sobre-dados strong {
+        font-size: 3.5rem;
+    }
 }
