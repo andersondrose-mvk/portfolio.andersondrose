@@ -420,7 +420,7 @@ li {
     align-items: center;
   }
   .sobre-texto {
-    max-width: 60%;
+    max-width: 80%;
   }
   .sobre-dados {
     flex-direction: column;
