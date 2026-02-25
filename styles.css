@@ -48,8 +48,8 @@ li {
 .menu {
   display: flex;
   gap: 10px;
-}
-
+  
+  }
 .hero {
   height: 80vh;
   background: radial-gradient(circle at top, #0f172a, #020617);
@@ -550,8 +550,9 @@ section {
 }
 @media (max-width: 1200px) {
     .navbar, #sobre, #projetos, #habilidades, #contato {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 0px;
+        padding-right: 0px;
+		
     }
 }
 /* Estado inicial: Invisível e levemente abaixo */
