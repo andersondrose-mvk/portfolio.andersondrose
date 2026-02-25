@@ -11,12 +11,12 @@
     <header class="hero">
       <nav class="navbar">
         <h3 class="logo">DevAndersonDrose</h3>
-        <button id="hamburger">☰</button>
+        <button id="hamburger" aria-label="Abrir menu">☰</button>
         <ul class="menu" id="menu">
           <li><a href="#sobre">Sobre mim</a></li>
           <li><a href="#projetos">Projetos</a></li>
           <li><a href="#habilidades">Habilidades</a></li>
-          <li><a href="#contatos">Contato</a></li>
+          <li><a href="#contato">Contato</a></li>
         </ul>
       </nav>
       <div class="hero-container">
@@ -93,7 +93,7 @@
           <img src="./assets/foto-projetos.jpg" alt="imagem de projeto" />
           <h2>Portfólio Teste</h2>
           <p>Primeiros testes/projeto</p>
-          <a href="https://andersondrose-mvk.github.io/site/" >Ver projeto</a>
+          <a href="https://andersondrose-mvk.github.io/site/">Ver projeto</a>
         </div>
       </div>
     </section>
@@ -185,13 +185,56 @@
         </a>
 
         <a
-          href="https://www.linkedin.com/in/anderson-dr%C3%B6se-012053110"
+          href="https://www.linkedin.com/in/anderson-dröse-012053110"
           target="_blank"
           rel="noopener noreferrer"
         >
           LinkedIn
         </a>
       </div>
+      <form
+        id="form-contato"
+        action="https://formspree.io/f/mykdlbke"
+        method="POST"
+        class="form-contato"
+      >
+        <div class="form-group">
+          <label for="nome-contato">Nome:</label>
+          <input
+            type="text"
+            name="name"
+            id="nome-contato"
+            class="form-input"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email-contato">E-mail:</label>
+          <input
+            type="email"
+            name="email"
+            id="email-contato"
+            class="form-input"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="mensagem">Mensagem:</label>
+          <textarea
+            name="message"
+            id="mensagem"
+            class="form-input"
+            rows="4"
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" id="btn-submit" class="btn-enviar">
+          Enviar Mensagem
+        </button>
+      </form>
     </section>
     <!-- Rodape -->
     <footer class="footer">
@@ -199,28 +242,7 @@
       <p>&copy; 2024 Direitos Reservados a Anderson Dröse Martins</p>
       <!-- &copy; usado para add simbolo copyright -->
     </footer>
-    <script>
-      const button = document.getElementById("hamburger");
-const menu = document.getElementById("menu");
-
-// Abrir/Fechar Menu Mobile
-button.addEventListener("click", () => {
-  menu.classList.toggle("ativa");
-});
-
-// Fechar o menu automaticamente ao clicar em um link (Melhora a UX)
-const links = document.querySelectorAll(".menu a");
-links.forEach(link => {
-  link.addEventListener("click", () => {
-    menu.classList.remove("ativa");
-  });
-});
-      // let button = document.getElementById("hamburger");
-      // const menu = document.getElementById("menu");
-
-      // button.addEventListener("click", function () {
-      //   menu.classList.toggle("ativa");
-      // });
-    </script>
+    <a href="#" id="backToTop" title="Voltar ao topo">▲</a>
+    <script src="script.js"></script>
   </body>
 </html>
