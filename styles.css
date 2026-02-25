@@ -573,3 +573,24 @@ li {
         font-size: 3.5rem;
     }
 }
+section {
+    border-bottom: 1px solid rgba(52, 211, 153, 0.1); /* Linha verde quase invisível */
+}
+@media (max-width: 1200px) {
+    .navbar, #sobre, #projetos, #habilidades, #contato {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+/* Estado inicial: Invisível e levemente abaixo */
+.animar-entrada {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+/* Estado final: Visível e na posição original */
+.animar-entrada.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
