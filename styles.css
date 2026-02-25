@@ -484,25 +484,7 @@ li {
     margin: 0 auto;
 }
 
-/* @media (min-width: 1200px) {
-    .sobre-conteudo {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 60px;
-        text-align: left;
-    }
 
-    .sobre-texto {
-        flex: 2; /* O texto ocupa mais espaço */
-    }
-
-    .sobre-dados {
-        flex: 1; /* Os números ocupam a lateral */
-        flex-direction: column; /* Dados um embaixo do outro na lateral */
-        align-items: flex-start;
-    }
-} */
 
 .hero-container h2 {
     font-size: 4.5rem; /* Aumentado para 1080p */
@@ -529,17 +511,7 @@ li {
     height: 70vh; /* Diminuído para não sobrar tanto espaço no topo em 1080p */
     min-height: 500px;
 }
-/* @media (min-width: 1200px) {
-    .sobre-dados {
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* Coloca os dados em duas colunas ao lado do texto */
-        gap: 40px;
-    }
-    
-    .sobre-dados strong {
-        font-size: 3.5rem; /* Números maiores para preencher a tela */
-    }
-} */
+
 .projetos-container {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
     gap: 40px; /* Mais espaço entre cards preenche melhor o vazio */
@@ -594,3 +566,5 @@ section {
   opacity: 1;
   transform: translateY(0);
 }
+
+
