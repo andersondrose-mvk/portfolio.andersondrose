@@ -15,7 +15,7 @@
         <ul class="menu" id="menu">
           <li><a href="#sobre">Sobre mim</a></li>
           <li><a href="#projetos">Projetos</a></li>
-          <li><a href="#habilidades">Contato</a></li>
+          <li><a href="#habilidades">Habilidades</a></li>
           <li><a href="#contatos">Contato</a></li>
         </ul>
       </nav>
@@ -93,7 +93,7 @@
           <img src="./assets/foto-projetos.jpg" alt="imagem de projeto" />
           <h2>Portfólio Teste</h2>
           <p>Primeiros testes/projeto</p>
-          <a href="https://andersondrose-mvk.github.io/site/">Ver projeto</a>
+          <a href="https://andersondrose-mvk.github.io/site/" >Ver projeto</a>
         </div>
       </div>
     </section>
@@ -200,12 +200,27 @@
       <!-- &copy; usado para add simbolo copyright -->
     </footer>
     <script>
-      let button = document.getElementById("hamburger");
-      const menu = document.getElementById("menu");
+      const button = document.getElementById("hamburger");
+const menu = document.getElementById("menu");
 
-      button.addEventListener("click", function () {
-        menu.classList.toggle("ativa");
-      });
+// Abrir/Fechar Menu Mobile
+button.addEventListener("click", () => {
+  menu.classList.toggle("ativa");
+});
+
+// Fechar o menu automaticamente ao clicar em um link (Melhora a UX)
+const links = document.querySelectorAll(".menu a");
+links.forEach(link => {
+  link.addEventListener("click", () => {
+    menu.classList.remove("ativa");
+  });
+});
+      // let button = document.getElementById("hamburger");
+      // const menu = document.getElementById("menu");
+
+      // button.addEventListener("click", function () {
+      //   menu.classList.toggle("ativa");
+      // });
     </script>
   </body>
 </html>
