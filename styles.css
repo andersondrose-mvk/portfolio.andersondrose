@@ -1,0 +1,315 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*  o * acessa o arquivo raiz */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0b1220;
+  color: #e5e7eb;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  /* cor herdada */
+}
+
+li {
+  list-style: none;
+}
+
+.logo {
+  color: #34d399;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  position: relative;
+}
+
+.menu {
+  display: flex;
+  gap: 10px;
+}
+
+.hero {
+  height: 50vh;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+}
+
+.hero-container {
+  text-align: center;
+  margin-top: 3em;
+}
+
+.intro {
+  color: #34d399;
+  margin-bottom: 10px;
+}
+
+.hero-container h2 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.descricao {
+  color: #34d399;
+}
+
+/* Sobre */
+
+#sobre {
+  height: 50vh;
+  padding: 1em;
+}
+
+#sobre h2 {
+  color: #34d399;
+  text-align: center;
+  margin: auto;
+}
+
+.sobre-conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.sobre-conteudo .sobre-texto {
+  flex: 1;
+}
+
+.sobre-conteudo .sobre-formacao {
+  flex: 1;
+}
+
+.sobre-texto {
+  color: #9ca3af;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.sobre-dados {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.sobre-dados div {
+  text-align: center;
+}
+
+.sobre-dados strong {
+  display: block;
+  font-size: 2em;
+  color: #34d399;
+}
+
+.sobre-dados span {
+  font-size: 1em;
+  color: #9ca3af;
+}
+
+/* Projetos */
+
+#projetos {
+  min-height: 100vh;
+  text-align: center;
+  margin: 20px;
+}
+
+.projetos-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.projetos-container > * {
+  flex: 1 1 250px;
+}
+
+.projeto-card {
+  background: #020617;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.projeto-card img {
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+#projetos h2 {
+  color: #34d399;
+  margin-bottom: 1em;
+}
+
+.projeto-card p {
+  color: #9ca3af;
+  margin-bottom: 25px;
+}
+
+.projeto-card a {
+  color: #34d399;
+  font-weight: bold;
+  border: 2px solid #34d399;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* HABILIDADES */
+
+#habilidades {
+  min-height: 50vh;
+  text-align: center;
+}
+
+#habilidades p {
+  color: #9ca3af;
+  margin: 20px;
+}
+
+.habilidades-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px;
+  justify-content: space-around;
+}
+
+.habilidades-card {
+  background-color: #020617;
+  border: 1px solid #1f2933;
+  border-radius: 10px;
+  padding: 20px 20px;
+}
+
+.habilidades-card:hover {
+  border: 1px solid #34d399;
+}
+
+.habilidades-card span {
+  padding: 5px 14px;
+  border-radius: 10px;
+  background: #020617;
+  border: 1px solid #34d399;
+  color: #34d399;
+  font-size: 0.7em;
+}
+
+.habilidades-card h3 {
+  margin-bottom: 10px;
+}
+
+#contato {
+  min-height: 100vh;
+  text-align: center;
+  padding: 1em;
+}
+
+#contato h2 {
+  color: #34d399;
+  margin-bottom: 20px;
+}
+
+#contato p {
+  color: #9ca3af;
+  margin-bottom: 15px;
+}
+
+.contatos-lista {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.contato-item {
+  background: #020617;
+  padding: 20px 30px;
+  border-radius: 10px;
+  border: 1px solid #34d399;
+}
+
+.contato-item strong {
+  display: block;
+  color: #34d399;
+  margin-bottom: 5px;
+}
+
+.contato-item span {
+  color: #9ca3af;
+  font-size: 0.7em;
+}
+
+.redes-sociais {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .redes-sociais {
+    flex-direction: column;
+  }
+}
+
+.redes-sociais a {
+  border: 1px solid #34d399;
+  border-radius: 10px;
+  color: #34d399;
+  padding: 10px 20px;
+}
+
+.redes-sociais a:hover {
+  color: #020617;
+  background: #10b981;
+}
+
+.footer {
+  /* height: 10vh; */
+  text-align: center;
+  padding: 20px;
+  background: #020617;
+  color: #9ca3af;
+}
+
+#hamburger {
+  display: none;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  #hamburger {
+    display: block;
+  }
+
+  .menu {
+    position: absolute;
+    top: 70px;
+    right: 40px;
+    gap: 15px;
+    background: #111;
+    flex-direction: column;
+    display: none;
+  }
+}
+
+.menu.ativa {
+  display: flex;
+}
