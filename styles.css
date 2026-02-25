@@ -551,8 +551,7 @@ section {
 @media (max-width: 1200px) {
     .navbar, #sobre, #projetos, #habilidades, #contato {
         padding-left: 0px;
-        padding-right: 0px;
-		
+        padding-right: 0px;		
     }
 }
 /* Estado inicial: Invisível e levemente abaixo */
