@@ -1,68 +1,80 @@
-// --- MENU MOBILE ---
-const button = document.getElementById("hamburger");
+// 1. Menu Mobile
+const hamburger = document.getElementById("hamburger");
 const menu = document.getElementById("menu");
 
-button.addEventListener("click", () => menu.classList.toggle("ativa"));
+hamburger.addEventListener("click", () => {
+    menu.classList.toggle("ativa");
+    // Opcional: muda o ícone de ☰ para ✕
+    hamburger.innerText = menu.classList.contains("ativa") ? "✕" : "☰";
+});
 
+// Fecha o menu ao clicar em um link
 document.querySelectorAll(".menu a").forEach(link => {
-  link.addEventListener("click", () => menu.classList.remove("ativa"));
-});
-
-// --- FORMULÁRIO COM FETCH ---
-const formContato = document.getElementById("form-contato");
-const btnSubmit = document.getElementById("btn-submit");
-
-formContato.addEventListener("submit", async function (event) {
-  event.preventDefault();
-  btnSubmit.innerText = "Enviando...";
-  btnSubmit.disabled = true;
-
-  try {
-    const response = await fetch(this.action, {
-      method: this.method,
-      body: new FormData(this),
-      headers: { Accept: "application/json" },
+    link.addEventListener("click", () => {
+        menu.classList.remove("ativa");
+        hamburger.innerText = "☰";
     });
-
-    if (response.ok) {
-      alert("Obrigado, Anderson recebeu sua mensagem!");
-      formContato.reset();
-    } else {
-      alert("Ops! Houve um problema ao enviar.");
-    }
-  } catch (error) {
-    alert("Erro de conexão.");
-  } finally {
-    btnSubmit.innerText = "Enviar Mensagem";
-    btnSubmit.disabled = false;
-  }
 });
 
-// --- BOTÃO VOLTAR AO TOPO ---
+// 2. Botão Voltar ao Topo
 const backToTop = document.getElementById("backToTop");
 
 window.addEventListener("scroll", () => {
-  const posicaoAtual = window.scrollY || document.documentElement.scrollTop;
-  backToTop.classList.toggle("show", posicaoAtual > 300);
+    if (window.scrollY > 400) {
+        backToTop.classList.add("show");
+    } else {
+        backToTop.classList.remove("show");
+    }
 });
 
-backToTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+backToTop.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// --- ANIMAÇÃO DE ENTRADA (NOVO) ---
-const observerOptions = { threshold: 0.1 };
+// 3. Intersection Observer (Animação de Entrada)
+const observerOptions = {
+    threshold: 0.15
+};
 
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visivel");
-    }
-  });
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visivel");
+        }
+    });
 }, observerOptions);
 
-// Seleciona o que você quer animar
-document.querySelectorAll("section, .projeto-card, .habilidades-card").forEach(el => {
-  el.classList.add("animar-entrada");
-  observer.observe(el);
+document.querySelectorAll(".animar-entrada").forEach(el => observer.observe(el));
+
+// 4. Formulário Fetch (Formspree)
+const form = document.getElementById("form-contato");
+const btnSubmit = document.getElementById("btn-submit");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    btnSubmit.disabled = true;
+    btnSubmit.innerText = "Enviando...";
+
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            alert("Mensagem enviada com sucesso! Anderson responderá em breve.");
+            form.reset();
+        } else {
+            alert("Ocorreu um erro ao enviar. Tente novamente.");
+        }
+    } catch (error) {
+        alert("Erro de conexão. Verifique sua internet.");
+    } finally {
+        btnSubmit.disabled = false;
+        btnSubmit.innerText = "Enviar Mensagem";
+    }
 });
