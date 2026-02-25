@@ -1,80 +1,60 @@
-// 1. Menu Mobile
-const hamburger = document.getElementById("hamburger");
+// --- MENU MOBILE ---
+const button = document.getElementById("hamburger");
 const menu = document.getElementById("menu");
 
-hamburger.addEventListener("click", () => {
-    menu.classList.toggle("ativa");
-    // Opcional: muda o ícone de ☰ para ✕
-    hamburger.innerText = menu.classList.contains("ativa") ? "✕" : "☰";
+button.addEventListener("click", () => {
+  menu.classList.toggle("ativa");
 });
 
-// Fecha o menu ao clicar em um link
-document.querySelectorAll(".menu a").forEach(link => {
-    link.addEventListener("click", () => {
-        menu.classList.remove("ativa");
-        hamburger.innerText = "☰";
+const links = document.querySelectorAll(".menu a");
+links.forEach((link) => {
+  link.addEventListener("click", () => {
+    menu.classList.remove("ativa");
+  });
+});
+
+// --- FORMULÁRIO COM FETCH ---
+const formContato = document.getElementById("form-contato");
+const btnSubmit = document.getElementById("btn-submit");
+
+formContato.addEventListener("submit", async function (event) {
+  event.preventDefault();
+  btnSubmit.innerText = "Enviando...";
+  btnSubmit.disabled = true;
+
+  const formData = new FormData(this);
+
+  try {
+    const response = await fetch(this.action, {
+      method: this.method,
+      body: formData,
+      headers: { Accept: "application/json" },
     });
+
+    if (response.ok) {
+      alert("Obrigado, Anderson recebeu sua mensagem com sucesso!");
+      formContato.reset();
+    } else {
+      alert("Ops! Houve um problema ao enviar.");
+    }
+  } catch (error) {
+    alert("Erro de conexão.");
+  } finally {
+    btnSubmit.innerText = "Enviar Mensagem";
+    btnSubmit.disabled = false;
+  }
 });
 
-// 2. Botão Voltar ao Topo
+// --- BOTÃO VOLTAR AO TOPO ---
 const backToTop = document.getElementById("backToTop");
 
 window.addEventListener("scroll", () => {
-    if (window.scrollY > 400) {
-        backToTop.classList.add("show");
-    } else {
-        backToTop.classList.remove("show");
-    }
-});
+  // Pegamos o valor do scroll de forma robusta para todos os navegadores
+  const posicaoAtual = window.scrollY || document.documentElement.scrollTop;
 
-backToTop.addEventListener("click", (e) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-// 3. Intersection Observer (Animação de Entrada)
-const observerOptions = {
-    threshold: 0.15
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("visivel");
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll(".animar-entrada").forEach(el => observer.observe(el));
-
-// 4. Formulário Fetch (Formspree)
-const form = document.getElementById("form-contato");
-const btnSubmit = document.getElementById("btn-submit");
-
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    btnSubmit.disabled = true;
-    btnSubmit.innerText = "Enviando...";
-
-    const formData = new FormData(form);
-
-    try {
-        const response = await fetch(form.action, {
-            method: "POST",
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-            alert("Mensagem enviada com sucesso! Anderson responderá em breve.");
-            form.reset();
-        } else {
-            alert("Ocorreu um erro ao enviar. Tente novamente.");
-        }
-    } catch (error) {
-        alert("Erro de conexão. Verifique sua internet.");
-    } finally {
-        btnSubmit.disabled = false;
-        btnSubmit.innerText = "Enviar Mensagem";
-    }
+  if (posicaoAtual > 300) {
+    backToTop.classList.add("show");
+  } else {
+    backToTop.classList.remove("show");
+  }
 });
