@@ -19,12 +19,24 @@ const btnSubmit = document.getElementById("btn-submit");
 
 formContato.addEventListener("submit", async function (event) {
   event.preventDefault();
+
+  // 1. CAPTURA E VALIDAÇÃO DE DADOS (Agora dentro do submit)
+  const nome = document.getElementById("nome-contato").value.trim();
+  const mensagem = document.getElementById("mensagem").value.trim();
+
+  if (nome.length < 3 || mensagem.length < 10) {
+    alert("Por favor, preencha seu nome corretamente (min. 3 letras) e uma mensagem com pelo menos 10 caracteres.");
+    return; // Para a execução se os dados forem inválidos
+  }
+
+  // 2. PREPARAÇÃO PARA ENVIO
   btnSubmit.innerText = "Enviando...";
   btnSubmit.disabled = true;
 
   const formData = new FormData(this);
 
   try {
+    // 3. ENVIO REAL PARA O FORMSPREE
     const response = await fetch(this.action, {
       method: this.method,
       body: formData,
@@ -40,6 +52,7 @@ formContato.addEventListener("submit", async function (event) {
   } catch (error) {
     alert("Erro de conexão.");
   } finally {
+    // 4. RESTAURA O BOTÃO
     btnSubmit.innerText = "Enviar Mensagem";
     btnSubmit.disabled = false;
   }
@@ -49,7 +62,6 @@ formContato.addEventListener("submit", async function (event) {
 const backToTop = document.getElementById("backToTop");
 
 window.addEventListener("scroll", () => {
-  // Pegamos o valor do scroll de forma robusta para todos os navegadores
   const posicaoAtual = window.scrollY || document.documentElement.scrollTop;
 
   if (posicaoAtual > 300) {
